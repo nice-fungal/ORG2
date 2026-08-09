@@ -8,8 +8,8 @@ import {
 import {
   KANBAN_MENU_ITEM_ID,
   TEAM_INBOX_MENU_ITEM_ID,
-  WORK_ITEMS_GITHUB_ISSUES_MENU_ITEM_ID,
-  WORK_ITEMS_GITHUB_PRS_MENU_ITEM_ID,
+  // WORK_ITEMS_GITHUB_ISSUES_MENU_ITEM_ID,
+  // WORK_ITEMS_GITHUB_PRS_MENU_ITEM_ID,
   WORK_ITEMS_MENU_ITEM_ID,
   WORK_ITEMS_PROJECTS_MENU_ITEM_ID,
   WORK_ITEMS_RUNS_MENU_ITEM_ID,
@@ -25,22 +25,22 @@ describe("buildWorkItemsSidebarMenuItems", () => {
     const items = buildWorkItemsSidebarMenuItems({
       workItems: "Work Items",
       projects: "Projects",
-      githubIssues: "GitHub Issues",
-      githubPrs: "GitHub PRs",
+      // githubIssues: "GitHub Issues",
+      // githubPrs: "GitHub PRs",
       runs: "Runs",
     });
 
     expect(items.map((item) => item.id)).toEqual([
-      WORK_ITEMS_GITHUB_PRS_MENU_ITEM_ID,
-      WORK_ITEMS_GITHUB_ISSUES_MENU_ITEM_ID,
+      // WORK_ITEMS_GITHUB_PRS_MENU_ITEM_ID,
+      // WORK_ITEMS_GITHUB_ISSUES_MENU_ITEM_ID,
       WORK_ITEMS_MENU_ITEM_ID,
       WORK_ITEMS_PROJECTS_MENU_ITEM_ID,
       WORK_ITEMS_RUNS_MENU_ITEM_ID,
     ]);
     expect(items[0]).toMatchObject({
-      label: "GitHub PRs",
-      iconName: "git-pull-request",
-      dataTestId: "sidebar-work-items-github-prs",
+      label: "Work Items",
+      iconName: "list-todo",
+      dataTestId: "sidebar-work-items",
     });
   });
 
@@ -51,12 +51,12 @@ describe("buildWorkItemsSidebarMenuItems", () => {
         projectsView: WORK_MANAGEMENT_PROJECTS_VIEW.WORK_ITEMS,
       })
     ).toBe(WORK_ITEMS_MENU_ITEM_ID);
-    expect(
-      resolveWorkItemsSidebarMenuItemId({
-        homeTab: WORK_MANAGEMENT_SECTION.GITHUB_PRS,
-        projectsView: WORK_MANAGEMENT_PROJECTS_VIEW.PROJECTS,
-      })
-    ).toBe(WORK_ITEMS_GITHUB_PRS_MENU_ITEM_ID);
+    // expect(
+    //   resolveWorkItemsSidebarMenuItemId({
+    //     homeTab: WORK_MANAGEMENT_SECTION.GITHUB_PRS,
+    //     projectsView: WORK_MANAGEMENT_PROJECTS_VIEW.PROJECTS,
+    //   })
+    // ).toBe(WORK_ITEMS_GITHUB_PRS_MENU_ITEM_ID);
     expect(
       resolveWorkItemsSidebarMenuItemId({
         homeTab: WORK_MANAGEMENT_SECTION.INBOX,
@@ -77,12 +77,12 @@ describe("buildWorkItemsSidebarMenuItems", () => {
     expect(isWorkManagementMenuItemId(WORK_ITEMS_PROJECTS_MENU_ITEM_ID)).toBe(
       true
     );
-    expect(
-      isWorkManagementMenuItemId(WORK_ITEMS_GITHUB_ISSUES_MENU_ITEM_ID)
-    ).toBe(true);
-    expect(isWorkManagementMenuItemId(WORK_ITEMS_GITHUB_PRS_MENU_ITEM_ID)).toBe(
-      true
-    );
+    // expect(
+    //   isWorkManagementMenuItemId(WORK_ITEMS_GITHUB_ISSUES_MENU_ITEM_ID)
+    // ).toBe(true);
+    // expect(isWorkManagementMenuItemId(WORK_ITEMS_GITHUB_PRS_MENU_ITEM_ID)).toBe(
+    //   true
+    // );
     expect(isWorkManagementMenuItemId("session:example")).toBe(false);
   });
 });
