@@ -23,8 +23,8 @@ import {
   NEW_SESSION_MENU_ITEM_ID,
   RUNTIME_MENU_ITEM_ID,
   TEAM_INBOX_MENU_ITEM_ID,
-  WORK_ITEMS_GITHUB_ISSUES_MENU_ITEM_ID,
-  WORK_ITEMS_GITHUB_PRS_MENU_ITEM_ID,
+  // WORK_ITEMS_GITHUB_ISSUES_MENU_ITEM_ID,
+  // WORK_ITEMS_GITHUB_PRS_MENU_ITEM_ID,
   WORK_ITEMS_MENU_ITEM_ID,
   WORK_ITEMS_PROJECTS_MENU_ITEM_ID,
   WORK_ITEMS_RUNS_MENU_ITEM_ID,
@@ -114,12 +114,12 @@ export function useWorkstationSidebarMenuItemRouting({
         setWorkManagementProjectsView(WORK_MANAGEMENT_PROJECTS_VIEW.WORK_ITEMS);
         section = WORK_MANAGEMENT_SECTION.PROJECTS;
         title = t("labels.workItems");
-      } else if (item.id === WORK_ITEMS_GITHUB_ISSUES_MENU_ITEM_ID) {
-        section = WORK_MANAGEMENT_SECTION.GITHUB_ISSUES;
-        title = tSessions("kanban.sidebar.githubIssues");
-      } else if (item.id === WORK_ITEMS_GITHUB_PRS_MENU_ITEM_ID) {
-        section = WORK_MANAGEMENT_SECTION.GITHUB_PRS;
-        title = tSessions("kanban.sidebar.githubPrs");
+        // } else if (item.id === WORK_ITEMS_GITHUB_ISSUES_MENU_ITEM_ID) {
+        //   section = WORK_MANAGEMENT_SECTION.GITHUB_ISSUES;
+        //   title = tSessions("kanban.sidebar.githubIssues");
+        // } else if (item.id === WORK_ITEMS_GITHUB_PRS_MENU_ITEM_ID) {
+        //   section = WORK_MANAGEMENT_SECTION.GITHUB_PRS;
+        //   title = tSessions("kanban.sidebar.githubPrs");
       } else if (item.id === WORK_ITEMS_RUNS_MENU_ITEM_ID) {
         section = WORK_MANAGEMENT_SECTION.RUNS;
         title = tSessions("kanban.sidebar.runs");

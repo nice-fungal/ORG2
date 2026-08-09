@@ -1,12 +1,4 @@
-import {
-  Box,
-  Columns3,
-  Gauge,
-  Github,
-  Inbox,
-  Plus,
-  SquarePen,
-} from "lucide-react";
+import { Box, Columns3, Gauge, Inbox, Plus, SquarePen } from "lucide-react";
 import React from "react";
 
 import type { NavigationMenuItem } from "@src/scaffold/NavigationSidebar/components/NavigationMenu/config";
@@ -18,7 +10,6 @@ import { formatRelativeTime } from "@src/util/time/formatRelativeTime";
 import {
   KANBAN_MENU_ITEM_ID,
   NEW_SESSION_MENU_ITEM_ID,
-  PROJECTS_IMPORT_GITHUB_ISSUES_MENU_ITEM_ID,
   PROJECTS_NEW_PROJECT_MENU_ITEM_ID,
   PROJECTS_NEW_WORK_ITEM_MENU_ITEM_ID,
   RUNTIME_MENU_ITEM_ID,
@@ -153,14 +144,14 @@ export function buildProjectsPinnedMenuItems({
       iconName: "box",
       dataTestId: "sidebar-create-project",
     },
-    {
-      id: PROJECTS_IMPORT_GITHUB_ISSUES_MENU_ITEM_ID,
-      key: PROJECTS_IMPORT_GITHUB_ISSUES_MENU_ITEM_ID,
-      label: importGithubIssuesLabel,
-      icon: Github,
-      iconName: "github",
-      dataTestId: "sidebar-import-github-issues",
-    },
+    // {
+    //   id: PROJECTS_IMPORT_GITHUB_ISSUES_MENU_ITEM_ID,
+    //   key: PROJECTS_IMPORT_GITHUB_ISSUES_MENU_ITEM_ID,
+    //   label: importGithubIssuesLabel,
+    //   icon: Github,
+    //   iconName: "github",
+    //   dataTestId: "sidebar-import-github-issues",
+    // },
     buildTeamInboxMenuItem({
       teamInboxLabel,
       teamInboxUnreadCount,
