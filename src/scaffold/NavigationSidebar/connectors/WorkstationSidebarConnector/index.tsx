@@ -30,7 +30,6 @@ import {
   SETUP_GUIDE_PERSISTED_MILESTONE,
   completeSetupGuideMilestone,
   consumeSetupGuideHandoff,
-  hasCompletedSetupGuideMilestone,
 } from "@src/store/settings/setupGuideProgress";
 import { saveSetupGuideProgressAtom } from "@src/store/settings/setupGuideProgressAtom";
 import {
@@ -738,22 +737,14 @@ export const WorkstationSidebarConnector: React.FC = () => {
 
   const guideCompletion = useMemo<SidebarGuideCompletion>(
     () => ({
-      [SIDEBAR_GUIDE_MILESTONE.SESSION]: sessions.length > 0,
-      [SIDEBAR_GUIDE_MILESTONE.ORGANIZATION]: Boolean(guideCloudOrg),
-      [SIDEBAR_GUIDE_MILESTONE.TEAMMATE]: hasCompletedSetupGuideMilestone(
-        setupGuideProgress,
-        SETUP_GUIDE_PERSISTED_MILESTONE.TEAMMATE_INVITED
-      ),
-      [SIDEBAR_GUIDE_MILESTONE.TEAM_USAGE]: hasCompletedSetupGuideMilestone(
-        setupGuideProgress,
-        SETUP_GUIDE_PERSISTED_MILESTONE.TEAM_ACTIVITY_VIEWED
-      ),
-      [SIDEBAR_GUIDE_MILESTONE.PRODUCT_TOUR]: hasCompletedSetupGuideMilestone(
-        setupGuideProgress,
-        SETUP_GUIDE_PERSISTED_MILESTONE.PRODUCT_TOUR_STARTED
-      ),
+      // Keep every milestone complete while Starter Guide is disabled.
+      [SIDEBAR_GUIDE_MILESTONE.SESSION]: true,
+      [SIDEBAR_GUIDE_MILESTONE.ORGANIZATION]: true,
+      [SIDEBAR_GUIDE_MILESTONE.TEAMMATE]: true,
+      [SIDEBAR_GUIDE_MILESTONE.TEAM_USAGE]: true,
+      [SIDEBAR_GUIDE_MILESTONE.PRODUCT_TOUR]: true,
     }),
-    [guideCloudOrg, sessions.length, setupGuideProgress]
+    []
   );
 
   const guideScopeLabel = useMemo(() => {
