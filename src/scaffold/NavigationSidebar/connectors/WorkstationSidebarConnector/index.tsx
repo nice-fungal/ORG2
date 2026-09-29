@@ -621,6 +621,36 @@ export const WorkstationSidebarConnector: React.FC = () => {
     [wrapOrderedRow, resolvedRenderMenuItemWrapper]
   );
 
+  const guide = useSidebarGuide({
+    t,
+    guideCloudOrg: manageableCloudOrg,
+    activeOrgId,
+    orgSelectorOptions,
+    sessionCount: sessions.length,
+    runtimeLabel,
+  });
+
+  const guideCompletion = useMemo<SidebarGuideCompletion>(
+    () => ({
+      // Keep every milestone complete while Starter Guide is disabled.
+      [SIDEBAR_GUIDE_MILESTONE.SESSION]: true,
+      [SIDEBAR_GUIDE_MILESTONE.ORGANIZATION]: true,
+      [SIDEBAR_GUIDE_MILESTONE.TEAMMATE]: true,
+      [SIDEBAR_GUIDE_MILESTONE.TEAM_USAGE]: true,
+      [SIDEBAR_GUIDE_MILESTONE.PRODUCT_TOUR]: true,
+    }),
+    []
+  );
+
+  const guideScopeLabel = useMemo(() => {
+    const activeOption = orgSelectorOptions.find(
+      (option) => String(option.value) === String(activeOrgId)
+    );
+    return typeof activeOption?.label === "string"
+      ? activeOption.label
+      : t("sidebar.guide.localWorkspace");
+  }, [activeOrgId, orgSelectorOptions, t]);
+
   return (
     <>
       <NavigationSidebar
